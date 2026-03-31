@@ -1,26 +1,163 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap');
+
+/* ============================================
+   HOUSE OF CODE — DESIGN TOKENS
+   Based on Codehouse Style Guide V1.0
+   ============================================ */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --- Typography --- */
+  --font-primary: 'Plus Jakarta Sans', sans-serif;
+
+  /* --- Primary Colours --- */
+  --color-charcoal:       #0E0E0E;
+  --color-ch-red:         #BC1A28;
+  --color-charcoal-light: #5B5B5B;
+
+  /* --- Secondary Colours --- */
+  --color-blue:           #2237EC;
+  --color-mustard:        #926600;
+  --color-green:          #007567;
+  --color-light-grey:     #CECECE;
+  --color-white:          #FFFFFF;
+  --color-bg:             #EEEEF5;
+
+  /* --- Tints: Blue --- */
+  --tint-blue-dark:       #7783F3;
+  --tint-blue-mid:        #AFB6F8;
+  --tint-blue-light:      #EEEFFD;
+
+  /* --- Tints: Mustard --- */
+  --tint-mustard-dark:    #FFB50A;
+  --tint-mustard-mid:     #FFE3A3;
+  --tint-mustard-light:   #FFF8E7;
+
+  /* --- Tints: Green --- */
+  --tint-green-dark:      #00DBC1;
+  --tint-green-mid:       #75FFEF;
+  --tint-green-light:     #DBFFFB;
+
+  /* --- Tints: Red --- */
+  --tint-red-dark:        #E12134;
+  --tint-red-mid:         #ED7B86;
+  --tint-red-light:       #FADBDE;
+
+  /* --- Typography Scale --- */
+  --text-hero:   clamp(40px, 6vw, 64px);
+  --text-h1:     clamp(28px, 4vw, 40px);
+  --text-h2:     clamp(20px, 3vw, 28px);
+  --text-h3:     18px;
+  --text-body:   16px;
+  --text-small:  13px;
+  --text-label:  11px;
+
+  /* --- Font Weights --- */
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-bold:    700;
+  --weight-black:   800;
+
+  /* --- Spacing --- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* --- Border Radius --- */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* --- Max Width --- */
+  --max-width: 1280px;
+  --content-width: 720px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============================================
+   DARK THEME OVERRIDES
+   ============================================ */
+[data-theme="dark"] {
+  --color-charcoal:       #F5F5F5;
+  --color-charcoal-light: #ABABAB;
+  --color-bg:             #0E0E0E;
+  --color-white:          #1A1A1A;
+  --color-light-grey:     #2A2A2A;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================
+   BASE RESET & GLOBAL STYLES
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-primary);
+  font-weight: var(--weight-light);
+  font-size: var(--text-body);
+  line-height: 1.7;
+  color: var(--color-charcoal-light);
+  background-color: var(--color-bg);
 }
+
+/* ============================================
+   TYPOGRAPHY BASE STYLES
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  color: var(--color-charcoal);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: var(--text-h1); font-weight: var(--weight-bold); }
+h2 { font-size: var(--text-h2); font-weight: var(--weight-bold); }
+h3 { font-size: var(--text-h3); font-weight: var(--weight-medium); }
+
+p {
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
+  color: var(--color-charcoal-light);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-ch-red);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: #a01522;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.text-charcoal    { color: var(--color-charcoal); }
+.text-red         { color: var(--color-ch-red); }
+.text-muted       { color: var(--color-charcoal-light); }
+.text-label       { font-size: var(--text-label); font-weight: var(--weight-medium); letter-spacing: 0.12em; text-transform: uppercase; }
+.text-hero        { font-size: var(--text-hero); font-weight: var(--weight-black); letter-spacing: -0.03em; line-height: 1; color: var(--color-charcoal); }
