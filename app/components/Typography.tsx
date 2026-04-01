@@ -6,7 +6,7 @@ interface TextProps {
   style?: React.CSSProperties
 }
 
-const font = "'Plus Jakarta Sans', sans-serif"
+const font = 'var(--font-plus-jakarta), sans-serif'
 
 export function Hero({ children, style }: TextProps) {
   return <h1 style={{ fontFamily: font, fontWeight: 800, fontSize: 'clamp(40px, 6vw, 64px)', lineHeight: 1, letterSpacing: '-0.03em', color: '#0E0E0E', ...style }}>{children}</h1>
